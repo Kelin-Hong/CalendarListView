@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Library</string>
+    <!-- pull to refresh listview -->
+    <string name="pulldown_refreshing">加载中&#8230;</string>
+    <string name="pulldown_pull">加载上一月</string>
+    <string name="pulldown_release">释放加载</string>
+    <string name="today">今天</string>
+    <string-array name="week">
+        <item>周日</item>
+        <item>周一</item>
+        <item>周二</item>
+        <item>周三</item>
+        <item>周四</item>
+        <item>周五</item>
+        <item>周六</item>
+    </string-array>
+</resources>

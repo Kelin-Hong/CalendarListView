@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/Bg_Calendar_ListView_Header"
+    android:orientation="horizontal"
+    android:padding="3dp">
+
+    <TextView
+        android:id="@+id/header_day"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dip"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:text="05" />
+
+    <View
+        android:layout_width="2px"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:background="@android:color/white"></View>
+
+
+    <TextView
+        android:id="@+id/header_year_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textColor="#333333"
+        android:textSize="20sp"
+        tools:text="2016.07" />
+
+
+    <LinearLayout
+        android:id="@+id/layout_fav"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="right|center_vertical">
+
+        <ImageView
+            android:id="@+id/header_btn_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="8dp"
+            android:src="@mipmap/ic_btn_calendar_heart_down" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/week_bar"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/calendar_week_bg_color"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/red_ff725f" />
+
+    <FrameLayout
+        android:id="@+id/calendar_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></FrameLayout>
+
+    <com.kelin.calendarlistview.library.PinnedHeaderListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:fillViewport="true">
+
+    </com.kelin.calendarlistview.library.PinnedHeaderListView>
+</LinearLayout>

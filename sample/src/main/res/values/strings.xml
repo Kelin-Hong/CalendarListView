@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CalendarListView</string>
+    <string name="calendar_item_new_count">%d条</string>
+</resources>
