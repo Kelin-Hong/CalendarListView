@@ -2,7 +2,11 @@
 ---
 A custom ListView combine with CalendarView which interactive each other. just watch demo to get more detail.
 
-![CalendarListView Demo](http://upload-images.jianshu.io/upload_images/966283-221b7104628a464e.gif?imageMogr2/auto-orient/strip) 
+![CalendarListView Demo](art/CalendarViewDemo.gif) 
+
+## Demo ##
+
+Apk Download:[CalendarListView.apk](art/CalendarListView.apk) 
 
 ## Download ##
 
@@ -11,7 +15,7 @@ A custom ListView combine with CalendarView which interactive each other. just w
 ```
 
 
-#### 中文文档：[CalendarListView 日历列表文档](http://www.jianshu.com/p/43ea7a531700)
+#### 中文文档：[CalendarListView 日历列表文档](http://www.jianshu.com/p/ca2af05b3a53)
 
 ## Usage ##
 
@@ -48,7 +52,7 @@ public class CalendarItemAdapter extends BaseCalendarItemAdapter<CustomCalendarI
 }
 ```
 
-> tips：you can just use BaseCalendarItemAdapter by it is only show date in calendar View.
+> tips：you can just use BaseCalendarItemAdapter but it is only show date in calendar View.
 
 
 **2、Custom style of your ListView，override getSectionHeaderView and getItemView**
@@ -100,7 +104,7 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 
 ```
-**4、Loading data from server then update DataSet **
+**4、Loading data from server then update DataSet**
 
 - CalendarView 
 
