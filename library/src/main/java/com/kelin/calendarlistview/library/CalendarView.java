@@ -328,10 +328,12 @@ public class CalendarView extends FrameLayout {
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                float velocityY) {
             if (!isMonthChanging) {
-                Calendar calendar = CalendarHelper.getCalendarByYearMonthDay(selectedDate);
-                calendar.add(Calendar.MONTH, velocityY < 0 ? 1 : -1);
-                changeMonth(velocityY < 0 ? 1 : -1, CalendarHelper.YEAR_MONTH_DAY_FORMAT.format(calendar.getTime()),
-                        CalendarListView.Status.LIST_CLOSE);
+                if (Math.abs(velocityY) > Math.abs(velocityX)) {
+                    Calendar calendar = CalendarHelper.getCalendarByYearMonthDay(selectedDate);
+                    calendar.add(Calendar.MONTH, velocityY < 0 ? 1 : -1);
+                    changeMonth(velocityY < 0 ? 1 : -1, CalendarHelper.YEAR_MONTH_DAY_FORMAT.format(calendar.getTime()),
+                            CalendarListView.Status.LIST_CLOSE);
+                }
             }
             return super.onFling(e1, e2, velocityX, velocityY);
         }

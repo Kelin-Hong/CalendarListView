@@ -91,7 +91,7 @@ public class CalendarActivity extends RxAppCompatActivity {
 
         calendarListView.setOnCalendarViewItemClickListener(new CalendarListView.OnCalendarViewItemClickListener() {
             @Override
-            public void onDateSelected(View View, String selectedDate, int listSection) {
+            public void onDateSelected(View View, String selectedDate, int listSection, SelectedDateRegion selectedDateRegion) {
 
             }
         });
@@ -171,8 +171,9 @@ public class CalendarActivity extends RxAppCompatActivity {
                                         CustomCalendarItemModel customCalendarItemModel = calendarItemAdapter.getDayModelList().get(d);
                                         if (customCalendarItemModel != null) {
                                             customCalendarItemModel.setNewsCount(listTreeMap.get(d).size());
+                                            customCalendarItemModel.setFav(random.nextBoolean());
                                         }
-                                        customCalendarItemModel.setFav(random.nextBoolean());
+
                                     }
                                 }
                                 calendarItemAdapter.notifyDataSetChanged();

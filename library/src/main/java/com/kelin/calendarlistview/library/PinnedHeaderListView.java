@@ -26,6 +26,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -174,8 +175,10 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         if (mOnScrollListeners != null && mOnScrollListeners.size() > 0) {
-            for (OnScrollListener listener : mOnScrollListeners) {
-                listener.onScrollStateChanged(view, scrollState);
+            Iterator<OnScrollListener> it = mOnScrollListeners.iterator();
+            while (it.hasNext()) {
+                OnScrollListener item = it.next();
+                item.onScrollStateChanged(view, scrollState);
             }
         }
     }

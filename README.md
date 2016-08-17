@@ -11,7 +11,7 @@ Apk Download:[CalendarListView.apk](art/CalendarListView.apk)
 ## Download ##
 
 ```groovy
- compile 'com.kelin.calendarlistview:library:1.0.0'
+ compile 'com.kelin.calendarlistview:library:1.0.1'
 ```
 
 
@@ -153,7 +153,7 @@ private void onListDataLoadFinish(List<Data> datas){
 ```java
 calendarListView.setOnCalendarViewItemClickListener(new CalendarListView.OnCalendarViewItemClickListener() {   
      @Override    
-     public void onDateSelected(View View, String selectedDate, int listSection) {   
+     public void onDateSelected(View View, String selectedDate, int listSection, SelectedDateRegion selectedDateRegion) {   
      //do something....
      }
 });

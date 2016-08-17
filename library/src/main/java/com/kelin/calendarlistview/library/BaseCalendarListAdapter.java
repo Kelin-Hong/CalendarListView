@@ -77,27 +77,33 @@ public abstract class BaseCalendarListAdapter<T> extends SectionedBaseAdapter {
     /**
      * @param date require yyyy-mm-dd type
      * @return the position of date in current list,setSection() will make ListView scroll to specify section exactly.
-     * <ul>
-     * <li>if returnValue gt 0 : ListView will scroll to specify postion</li>
-     * <li>if returnValue = -1 : imply the selectedDate is before any date in ListView</li>
-     * <li>if returnValue = -2 :imply the selectedDate is after any date in ListView</li>
-     * </ul>
      */
     public Integer getDataListIndexByDate(String date) {
-        for (int i = 0; i < indexToTimeList.size(); i++) {
+        int i;
+        for (i = 0; i < indexToTimeList.size(); i++) {
             String key = indexToTimeList.get(i);
             if (key.compareTo(date) > 0) {
                 if (i > 0) {
                     return dateMapToPos.get(indexToTimeList.get(i - 1)) + 1;
                 } else if (i == 0) {
                     return 1;
-
-                } else {
-                    return -1;
                 }
             }
         }
-        return -2;
+        return dateMapToPos.get(indexToTimeList.get(i - 1)) + 1;
+    }
+
+
+    protected CalendarListView.OnCalendarViewItemClickListener.SelectedDateRegion getSelectedDateTypeByDate(String date) {
+        String key = indexToTimeList.get(0);
+        if (key.compareTo(date) > 0) {
+            return CalendarListView.OnCalendarViewItemClickListener.SelectedDateRegion.BEFORE;
+        }
+        key = indexToTimeList.get(indexToTimeList.size() - 1);
+        if (key.compareTo(date) < 0) {
+            return CalendarListView.OnCalendarViewItemClickListener.SelectedDateRegion.AFTER;
+        }
+        return CalendarListView.OnCalendarViewItemClickListener.SelectedDateRegion.INSIDE;
     }
 
     /**
@@ -113,7 +119,7 @@ public abstract class BaseCalendarListAdapter<T> extends SectionedBaseAdapter {
      *
      * @param date        "yyyy-mm-dd" format
      * @param convertView convertView
-     * @param parent parent
+     * @param parent      parent
      * @return view
      */
     public View getSectionHeaderView(String date, View convertView, ViewGroup parent) {

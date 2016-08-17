@@ -7,12 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.facebook.drawee.generic.GenericDraweeHierarchy;
-import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
-import com.facebook.drawee.generic.RoundingParams;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.kelin.calendarlistview.library.BaseCalendarListAdapter;
 import com.kelin.calendarlistview.library.CalendarHelper;
+import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
 import java.util.List;
@@ -61,17 +58,19 @@ public class DayNewsListAdapter extends BaseCalendarListAdapter<NewsService.News
             contentViewHolder = new ContentViewHolder();
             contentViewHolder.titleTextView = (TextView) convertView.findViewById(R.id.title);
             contentViewHolder.timeTextView = (TextView) convertView.findViewById(R.id.time);
-            contentViewHolder.newsImageView = (SimpleDraweeView) convertView.findViewById(R.id.image);
+            contentViewHolder.newsImageView = (ImageView) convertView.findViewById(R.id.image);
             convertView.setTag(contentViewHolder);
         }
 
         contentViewHolder.titleTextView.setText(model.getTitle());
         contentViewHolder.timeTextView.setText(date);
-        GenericDraweeHierarchy hierarchy = GenericDraweeHierarchyBuilder.newInstance(convertView.getResources())
-                .setRoundingParams(RoundingParams.asCircle())
-                .build();
-        contentViewHolder.newsImageView.setHierarchy(hierarchy);
-        contentViewHolder.newsImageView.setImageURI(Uri.parse(model.getImages().get(0)));
+//        GenericDraweeHierarchy hierarchy = GenericDraweeHierarchyBuilder.newInstance(convertView.getResources())
+//                .setRoundingParams(RoundingParams.asCircle())
+//                .build();
+//        contentViewHolder.newsImageView.setHierarchy(hierarchy);
+//        contentViewHolder.newsImageView.setImageURI(Uri.parse(model.getImages().get(0)));
+        Picasso.with(convertView.getContext()).load(Uri.parse(model.getImages().get(0)))
+                .into(contentViewHolder.newsImageView);
         return convertView;
     }
 
@@ -84,7 +83,7 @@ public class DayNewsListAdapter extends BaseCalendarListAdapter<NewsService.News
     private static class ContentViewHolder {
         TextView titleTextView;
         TextView timeTextView;
-        SimpleDraweeView newsImageView;
+        ImageView newsImageView;
     }
 
 }

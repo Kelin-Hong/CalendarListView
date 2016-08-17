@@ -135,11 +135,13 @@ public class CalendarListView extends FrameLayout {
                 if (!listView.smoothScrolling) {
                     currentSelectedDate = time;
                     int listPos = calendarListAdapter.getDataListIndexByDate(time);
-                    if (listPos >= 0) {
+                    OnCalendarViewItemClickListener.SelectedDateRegion selectedDateRegion = calendarListAdapter.getSelectedDateTypeByDate(time);
+                    if (selectedDateRegion == OnCalendarViewItemClickListener.SelectedDateRegion.INSIDE) {
                         listView.smoothScrollToPosition(listPos);
                     }
+
                     if (onCalendarViewItemClickListener != null) {
-                        onCalendarViewItemClickListener.onDateSelected(view, time, listPos);
+                        onCalendarViewItemClickListener.onDateSelected(view, time, listPos, selectedDateRegion);
                     }
                 }
             }
@@ -406,18 +408,25 @@ public class CalendarListView extends FrameLayout {
         /**
          * <p>when item of Calendar View was clicked will be trigger. </p>
          *
-         * @param View         the view(Calendar View Item) that was clicked.
-         * @param selectedDate the date has been selected is "yyyy-MM-dd" type
-         * @param listSection  selectedDate would map to the section of ListView
-         *                     <ul>
-         *                     <li>if listSection gt 0 : ListView will scroll to specify postion</li>
-         *                     <li>if listSection = -1 : imply the selectedDate is before any date in ListView</li>
-         *                     <li>if listSection = -2 :imply the selectedDate is after any date in ListView</li>
-         *                     </ul>
-         *                     listSection gt 0 was deal with by CalendarListView,you would take care when listSection lt 0
-         *                     just do anything you want or do nothing.
+         * @param View               the view(Calendar View Item) that was clicked.
+         * @param selectedDate       the date has been selected is "yyyy-MM-dd" type
+         * @param listSection        selectedDate would map to the section of ListView, ListView will scroll to specify position(listSection)
+         * @param selectedDateRegion selectedDateRegion = SelectedDateRegion.INSIDE was deal with by CalendarListView,you would take care other conditions
+         *                           just do anything you want or do nothing.
+         *                           <ul>
+         *                           <li>if selectedDateRegion = SelectedDateRegion.INSIDE : ListView will scroll to specify position,just care about it.</li>
+         *                           <li>if listSection = SelectedDateRegion.BEFORE : imply the selectedDate is before any date in ListView</li>
+         *                           <li>if listSection = SelectedDateRegion.AFTER :imply the selectedDate is after any date in ListView</li>
+         *                           </ul>
          */
-        void onDateSelected(View View, String selectedDate, int listSection);
+        void onDateSelected(View View, String selectedDate, int listSection, SelectedDateRegion selectedDateRegion);
+
+        enum SelectedDateRegion {
+            BEFORE,
+            AFTER,
+            INSIDE,
+        }
+
     }
 
 
